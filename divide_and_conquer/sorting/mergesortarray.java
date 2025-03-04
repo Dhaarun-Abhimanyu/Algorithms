@@ -1,7 +1,7 @@
-package sorting;
+package divide_and_conquer.sorting;
 import java.util.Scanner;
-public class bettermergesort {
-    
+public class mergesortarray {
+
     static void merge(int arr[], int left, int right, int mid){
         int n1[] = new int[mid-left+1];
         int n2[] = new int[right-mid];
@@ -32,14 +32,11 @@ public class bettermergesort {
     }
 
     static void mergesort(int arr[],int left, int right){
-        int k=1;
-        while(k < arr.length){
-            int i=0;
-            while(i<arr.length-k){
-                merge(arr, i, i+k, (i + i+k)/2);
-                i+=k;
-            }
-            k*=2;
+        if(left < right){
+            int mid = (left+right)/2;
+            mergesort(arr, left, mid);
+            mergesort(arr, mid+1, right);
+            merge(arr, left, right, mid);
         }
     }
 
