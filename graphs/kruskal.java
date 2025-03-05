@@ -36,7 +36,8 @@ public class kruskal {
 
     int find(int parent[], int a){
         if(parent[a] != a){
-            return find(parent, parent[a]);
+            parent[a] = find(parent, parent[a]);
+            return parent[a];
         }
         return a;
     }
